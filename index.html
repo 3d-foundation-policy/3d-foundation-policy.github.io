@@ -209,95 +209,8 @@
   </div>
 </section>
 
-<!-- <div class="columns is-centered has-text-centered"> -->
-  <!-- <div class="column is-four-fifths">
-    <h2 class="title is-3">In-the-Wild Testing Video</h2>
-    <p>
-      All our tasks performed excellently in in-the-wild testing. 
-    </p>
-    <div class="container block is-centered">
-      <div class="columns is-centered">
-        <div class="column is-2" style="width: 22%;">
-          <div class="select" style="display: block;">
-              <select id="env-selection" style="width: 100%;" onchange="SelectTestVideo()">
-                  <option value="env_1">Env 1</option>
-                  <option value="env_2">Env 2</option>
-                  <option value="env_3">Env 3</option>
-                  <option value="env_4">Env 4</option>
-                  <option value="env_5">Env 5</option>
-                  <option value="env_6">Env 6</option>
-                  <option value="env_7">Env 7</option>
-                  <option value="env_8">Env 8</option>
-              </select>
-          </div>
-      </div>
-      <div class="column is-2" style="width: 20%;">
-          <div class="select" style="display: block;">
-              <select id="task-selection" style="width: 100%;" onchange="SelectTestVideo()">
-                <option value="fold_towel">Fold Towel</option>
-                <option value="clean_table">Clean Table</option>
-                <option value="stand_up_cup">Stand Up Cup</option>
-                <option value="pour_water">Pour Water</option>
-              </select>
-          </div>
-      </div>
-      <div class="column is-2">
-        <button class="button is-info is-outlined" id="shuffle-video" style="width: 100%; color: #6510ad; border-color: #6510ad;">
-            <span class="icon">
-                <ion-icon name="shuffle-outline" role="img" class="md hydrated"></ion-icon>
-            </span>
-            <span>Shuffle</span>
-        </button>
-      </div>
-    </div>
-  </div>
-    <video id="dollyzoom" autoplay controls muted loop playsinline height="60%" width="40%" height="60%">
-      <source src="./static/videos/dollyzoom-stacked.mp4"
-              type="video/mp4">
-    </video>
-  </div>
-</div> -->
 
 <section class="section">
-  <!-- <div class="container is-max-desktop">
-
-    <div class="columns is-centered"> -->
-
-      <!-- Visual Effects. -->
-      <!-- <div class="column">
-        <div class="content">
-          <h2 class="title is-3">In-domain Performance</h2>
-          <p>
-            In in-domain experiments, with only 10 demonstrations percene, FP3 efficiently learns all tasks with a success rate exceeding 90%. 
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div> -->
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <!-- <div class="column">
-        <h2 class="title is-3">In-the-Wild Performance</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              Despite of only training with 80 demos collected in 8 scenes, FP3 performs well in all tasks with both unseen scenes and objects, achieving an average success rate of over 80%.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered"> -->
-
       <!-- Visual Effects. -->
       <div class="columns is-centered has-text-centered">
         <div class="content">
@@ -307,16 +220,16 @@
           </p>
           <div class="select" style="display: block;">
               <select id="task-selection" style="width: 100%;">
-                <option value="./static/videos/in_domain.mp4">In Domain</option>
-                <option value="./static/videos/background.mp4">Unseen Background</option>
-                <option value="./static/videos/distractor.mp4">Unseen Distractor</option>
-                <option value="./static/videos/object.mp4">Unseen Object</option>
-                <option value="./static/videos/light.mp4">Unseen Light Condition</option>
-                <option value="./static/videos/camera.mp4">Unseen Camera View</option>
+                <option value="./static/videos/in_domain_converted.mp4">In Domain</option>
+                <option value="./static/videos/background_converted.mp4">Unseen Background</option>
+                <option value="./static/videos/distractor_converted.mp4">Unseen Distractor</option>
+                <option value="./static/videos/object_converted.mp4">Unseen Object</option>
+                <option value="./static/videos/light_converted.mp4">Unseen Light Condition</option>
+                <option value="./static/videos/camera_converted.mp4">Unseen Camera View</option>
               </select>
           </div>
           <video id="generalization" autoplay controls muted loop playsinline height="100%">
-              <source id="video-source" src="./static/videos/in_domain.mp4" type="video/mp4">
+              <source id="video-source" src="./static/videos/in_domain_converted.mp4" type="video/mp4">
           </video>
           <script>
               document.getElementById('task-selection').addEventListener('change', function() {
@@ -331,80 +244,6 @@
           </script>
         </div>
       </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <!-- <div class="column">
-        <h2 class="title is-3">Instruction following</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              FP3 can perfectly follow the instructions to execute the correct tasks rather than simply memorize the training distribution, that is important in task excution.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div> -->
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-      <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <!-- <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
-        <!--/ Re-rendering. -->
-
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Concurrent Work. -->
 </section>
 
 
