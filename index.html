@@ -196,7 +196,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Following its success in natural language processing and computer vision, foundation models that are pre-trained on large-scale multi-task datasets have also shown great potential in robotics. However, most existing robot foundation models rely solely on 2D image observations, ignoring 3D geometric information, which is essential for robots to perceive and reason about the 3D world. In this paper, we introduce FP3, a first large-scale 3D foundation policy model for robotic manipulation. FP3 builds on a scalable diffusion transformer architecture and is pre-trained on 60k trajectories with point cloud observations. With the model design and diverse pre-training data, FP3 can be efficiently fine-tuned for downstream tasks while exhibiting strong generalization capabilities. Experiments on real robots demonstrate that with only 80 demonstrations, FP3 is able to learn a new task with over 90\% success rates in novel environments with unseen objects, significantly surpassing existing robot foundation models.
+            Following its success in natural language processing and computer vision, foundation models that are pre-trained on large-scale multi-task datasets have also shown great potential in robotics. However, most existing robot foundation models rely solely on 2D image observations, ignoring 3D geometric information, which is essential for robots to perceive and reason about the 3D world. In this paper, we introduce FP3, a first large-scale 3D foundation policy model for robotic manipulation. FP3 builds on a scalable diffusion transformer architecture and is pre-trained on 60k trajectories with point cloud observations. With the model design and diverse pre-training data, FP3 can be efficiently fine-tuned for downstream tasks while exhibiting strong generalization capabilities. Experiments on real robots demonstrate that with only 80 demonstrations, FP3 is able to learn a new task with over 90% success rates in novel environments with unseen objects, significantly surpassing existing robot foundation models.
           </p>
         </div>
       </div>
@@ -299,18 +299,40 @@
     <div class="columns is-centered"> -->
 
       <!-- Visual Effects. -->
-      <!-- <div class="column">
+      <div class="column">
         <div class="content">
           <h2 class="title is-3">Generalization</h2>
           <p>
             We conduct more comprehensive experiments on FP3's generalizability to different environments and robot setups using the Clean Table task.
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
+          <div class="column is-2" style="width: 20%;">
+            <div class="select" style="display: block;">
+                <select id="task-selection" style="width: 100%;">
+                  <option value="./static/videos/in_domain.mp4">In Domain</option>
+                  <option value="./static/videos/background.mp4">Unseen Background</option>
+                  <option value="./static/videos/distractor.mp4">Unseen Distractor</option>
+                  <option value="./static/videos/object.mp4">Unseen Object</option>
+                  <option value="./static/videos/light.mp4">Unseen Light Condition</option>
+                  <option value="./static/videos/camera.mp4">Unseen Camera View</option>
+                </select>
+            </div>
+          </div>
+          <video id="generalization" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/in_domain.mp4"
                     type="video/mp4">
           </video>
+          <script>
+            document.getElementById('task-selection').addEventListener('change', function() {
+                let videoPlayer = document.getElementById('generalization');
+                let selectedVideo = this.value;
+    
+                videoPlayer.src = selectedVideo;
+                videoPlayer.load();
+                videoPlayer.play();
+            });
+          </script>
         </div>
-      </div> -->
+      </div>
       <!--/ Visual Effects. -->
 
       <!-- Matting. -->
