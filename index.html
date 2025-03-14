@@ -131,7 +131,7 @@
     <div class="column is-four-fifths">
       <div class="publication-video">
         <iframe src="./static/images/fp3_video.mp4"
-                frameborder="0" allowfullscreen width="360" height="180"></iframe>
+                frameborder="0" allowfullscreen width="80%" height="180"></iframe>
       </div>
 
     </div>
@@ -139,64 +139,6 @@
   <div style="text-align: center;">
     <img src="./static/concept.jpg" width="80%" height="600px", alt="FP3 Concept">
   </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <!-- <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </section>
 
 
@@ -223,7 +165,6 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">In-the-Wild Test</h2>
@@ -232,12 +173,99 @@
             Our method, FP3, can be fine-tuned with a small number of target task samples and directly generalize to unseen scenes and objects. Our method outperforms both small models without pretraining and other large robotic models.
           </p>
         </div>
+        <div class="select" style="display: flex; justify-content: center; align-items: center; height: 10vh;">
+          <select id="video-selection" style="width: 100%;">
+              <option value="group1">Fold Towel</option>
+              <option value="group2">Stand Up Cup</option>
+              <option value="group3">Clean Table</option>
+              <option value="group4">Pour Water</option>
+          </select>
+        </div>
+        <div id="video-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;">
+          <video controls id="video1" src="./static/videos/video1.mp4" style="width: 100%;"></video>
+          <video controls id="video2" src="./static/videos/video8.mp4" style="width: 100%;"></video>
+          <video controls id="video3" src="./static/videos/video15.mp4" style="width: 100%;"></video>
+          <video controls id="video4" src="./static/videos/video16.mp4" style="width: 100%;"></video>
+      </div>
+
+        <script>
+            const videoSets = {
+                group1: ["./static/videos/video1.mp4", "./static/videos/video8.mp4", "./static/videos/video15.mp4", "./static/videos/video16.mp4"],
+                group2: ["./static/videos/video2.mp4", "./static/videos/video11.mp4", "./static/videos/video13.mp4", "./static/videos/video17.mp4"],
+                group3: ["./static/videos/video18.mp4", "./static/videos/video4.mp4", "./static/videos/video6.mp4", "./static/videos/video19.mp4"],
+                group4: ["./static/videos/video10.mp4", "./static/videos/video20.mp4", "./static/videos/video14.mp4", "./static/videos/video21.mp4"]
+            };
+
+            document.getElementById("video-selection").addEventListener("change", function() {
+                const selectedGroup = this.value;
+                const videos = document.querySelectorAll("#video-container video");
+                videoSets[selectedGroup].forEach((src, index) => {
+                    videos[index].src = src;
+                });
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+      <!-- Visual Effects. -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Generalization</h2>
+        <div class="content has-text-justified">
+          <p>
+            We conduct more comprehensive experiments on FP3's generalizability to different environments and robot setups using the Clean Table task.
+          </p>
+        </div>
+        <div class="select" style="display: flex; justify-content: center; align-items: center; height: 10vh;">
+          <select id="task-selection" style="width: 100%;">
+            <option value="./static/videos/in_domain_converted.mp4">In Domain</option>
+            <option value="./static/videos/background_converted.mp4">Unseen Background</option>
+            <option value="./static/videos/distractor_converted.mp4">Unseen Distractor</option>
+            <option value="./static/videos/object_converted.mp4">Unseen Object</option>
+            <option value="./static/videos/light_converted.mp4">Unseen Light Condition</option>
+            <option value="./static/videos/camera_converted.mp4">Unseen Camera View</option>
+          </select>
+        </div>          
+        <video id="generalization" autoplay controls muted loop playsinline width="100%">
+            <source id="video-source" src="./static/videos/in_domain_converted.mp4" type="video/mp4">
+        </video>
+        <script>
+            document.getElementById('task-selection').addEventListener('change', function() {
+                let videoPlayer = document.getElementById('generalization');
+                let videoSource = document.getElementById('video-source');
+                let selectedVideo = this.value;
+
+                videoSource.src = selectedVideo; // 修改 source 的 src
+                videoPlayer.load(); // 重新加载视频
+                videoPlayer.play(); // 播放新的视频
+            });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Instruction Following Performance</h2>
+        <div class="content has-text-justified">
+          <p>
+            To demonstrate FP3's language instruction following capability, we trained a multi-task policy using data from all four tasks and designed experiments to verify that even in the same scene setup, FP3 can still correctly execute different tasks when given different language instructions.
+          </p>
+        </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
     <!-- Video Grid. -->
-    <div class="container" id="videoGrid" style="width: 100%; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    <!-- <div class="container" id="videoGrid" style="width: 100%; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
       <video src="./static/videos/video3.mp4" onclick="playInMain(this)" autoplay loop muted></video>
       <video src="./static/videos/video4.mp4" onclick="playInMain(this)" autoplay loop muted></video>
       <video src="./static/videos/video5.mp4" onclick="playInMain(this)" autoplay loop muted></video>
@@ -250,66 +278,9 @@
       <video src="./static/videos/video12.mp4" onclick="playInMain(this)" autoplay loop muted></video>
       <video src="./static/videos/video13.mp4" onclick="playInMain(this)" autoplay loop muted></video>
       <video src="./static/videos/video14.mp4" onclick="playInMain(this)" autoplay loop muted></video>
-    </div>
-    <!--/ Video Grid. -->
-
-    <!-- Main Video Container. -->
-    <!-- <div class="main-video-container">
-        <video id="mainVideo" class="main-video" src="./static/videos/video1.mp4" controls></video>
     </div> -->
-    
-    <script>
-      function playInMain(videoElement) {
-        let mainVideo = document.getElementById("mainVideo");
-        mainVideo.src = videoElement.src;
-        mainVideo.play();
-      }
-    </script>
   </div>
 </section>
-
-<section class="section">
-      <!-- Visual Effects. -->
-      <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Generalization</h2>
-          <div class="content has-text-justified">
-          <p>
-            We conduct more comprehensive experiments on FP3's generalizability to different environments and robot setups using the Clean Table task.
-          </p>
-          </div>
-          <div class="select" style="display: flex; justify-content: center; align-items: center; height: 10vh;">
-            <select id="task-selection" style="width: 100%;">
-              <option value="./static/videos/in_domain_converted.mp4">In Domain</option>
-              <option value="./static/videos/background_converted.mp4">Unseen Background</option>
-              <option value="./static/videos/distractor_converted.mp4">Unseen Distractor</option>
-              <option value="./static/videos/object_converted.mp4">Unseen Object</option>
-              <option value="./static/videos/light_converted.mp4">Unseen Light Condition</option>
-              <option value="./static/videos/camera_converted.mp4">Unseen Camera View</option>
-            </select>
-          </div>          
-          <video id="generalization" autoplay controls muted loop playsinline width="100%">
-              <source id="video-source" src="./static/videos/in_domain_converted.mp4" type="video/mp4">
-          </video>
-          <script>
-              document.getElementById('task-selection').addEventListener('change', function() {
-                  let videoPlayer = document.getElementById('generalization');
-                  let videoSource = document.getElementById('video-source');
-                  let selectedVideo = this.value;
-
-                  videoSource.src = selectedVideo; // 修改 source 的 src
-                  videoPlayer.load(); // 重新加载视频
-                  videoPlayer.play(); // 播放新的视频
-              });
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
